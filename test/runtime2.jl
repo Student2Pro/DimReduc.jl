@@ -1,80 +1,80 @@
-using FastRefine
+using DimReduc
 using LazySets
-import FastRefine: forward_network, forward_affine_map, ishull
+import DimReduc: forward_network, forward_affine_map, ishull
 
-nnet = read_nnet("nnet/mnist-20.nnet")
+nnet = read_nnet("nnet/84442.nnet")
 
-delta = 0.1
+delta = 0.4
 
-solver5 = SpeGuid(delta)
-solver6 = HullTree(delta)
-solver7 = DimTree(delta)
-solver8 = FastTree(delta)
+solver1 = MaxSens(delta)
+solver2 = FastGrid(delta)
+solver3 = SpeGuid(delta)
+solver4 = FastTree(delta)
 
-in_hyper = Hyperrectangle(fill(1.0, 400), fill(1.0, 400))
-out_hyper = Hyperrectangle(fill(0.0, 10), fill(10.0, 10))
+in_hyper = Hyperrectangle(fill(1.0, 8), fill(1.0, 8))
+out_hyper = Hyperrectangle(fill(0.0, 2), fill(10.0, 2))
 problem = Problem(nnet, in_hyper, out_hyper)
 
 file = open("results/group2.txt", "a")
-print(file, "Test Result of Group 2:\n\n")
+print(file, "Test Result of Group 2: delta = $(delta)\n\n")
 
-#solver5
+#solver1
 
-time5 = 0
+time1 = 0
 
-solve(solver5, problem)
+#solve(solver1, problem)
+for i = 1:1
+    timed_result =@timed solve(solver1, problem)
+    print(file, "MaxSens - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
+    print(file, " - Output: " * string(timed_result.value) * "\n")
+    global time1 += timed_result.time
+end
+
+print(file, "Average time: " * string(time1/1) * " s\n\n")
+
+
+#solver2
+
+time2 = 0
+
+#solve(solver2, problem)
+for i = 1:1
+    timed_result =@timed solve(solver2, problem)
+    print(file, "FastGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
+    print(file, " - Output: " * string(timed_result.value) * "\n")
+    global time2 += timed_result.time
+end
+
+print(file, "Average time: " * string(time2/1) * " s\n\n")
+
+
+#solver3
+
+time3 = 0
+
+solve(solver3, problem)
 for i = 1:10
-    timed_result =@timed solve(solver5, problem)
+    timed_result =@timed solve(solver3, problem)
     print(file, "SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time5 += timed_result.time
+    global time3 += timed_result.time
 end
 
-print(file, "Average time: " * string(time5/10) * " s\n\n")
+print(file, "Average time: " * string(time3/10) * " s\n\n")
 
 
-#solver6
+#solver4
 
-time6 = 0
+time4 = 0
 
-solve(solver6, problem)
+solve(solver4, problem)
 for i = 1:10
-    timed_result =@timed solve(solver6, problem)
-    print(file, "HullTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
-    print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time6 += timed_result.time
-end
-
-print(file, "Average time: " * string(time6/10) * " s\n\n")
-
-
-#solver7
-
-time7 = 0
-
-solve(solver7, problem)
-for i = 1:10
-    timed_result =@timed solve(solver7, problem)
-    print(file, "DimTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
-    print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time7 += timed_result.time
-end
-
-print(file, "Average time: " * string(time7/10) * " s\n\n")
-
-
-#solver8
-
-time8 = 0
-
-solve(solver8, problem)
-for i = 1:10
-    timed_result =@timed solve(solver8, problem)
+    timed_result =@timed solve(solver4, problem)
     print(file, "FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time8 += timed_result.time
+    global time4 += timed_result.time
 end
 
-print(file, "Average time: " * string(time8/10) * " s\n\n")
+print(file, "Average time: " * string(time4/10) * " s\n\n")
 
 close(file)

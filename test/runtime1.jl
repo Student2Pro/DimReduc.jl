@@ -1,17 +1,17 @@
-using FastRefine
+using DimReduc
 using LazySets
-import FastRefine: forward_network, forward_affine_map, ishull
+#import DimReduc: forward_network, forward_affine_map, ishull
 
-nnet = read_nnet("nnet/64442.nnet")
+nnet = read_nnet("nnet/84442.nnet")
 
-delta = 0.1
+delta = 0.5
 
 solver1 = MaxSens(delta)
-solver2 = HullGrid(delta)
-solver3 = DimGrid(delta)
-solver4 = FastGrid(delta)
+solver2 = FastGrid(delta)
+solver3 = SpeGuid(delta)
+solver4 = FastTree(delta)
 
-in_hyper = Hyperrectangle(fill(1.0, 6), fill(1.0, 6))
+in_hyper = Hyperrectangle(fill(1.0, 8), fill(1.0, 8))
 out_hyper = Hyperrectangle(fill(0.0, 2), fill(10.0, 2))
 problem = Problem(nnet, in_hyper, out_hyper)
 
@@ -40,7 +40,7 @@ time2 = 0
 #solve(solver2, problem)
 for i = 1:1
     timed_result =@timed solve(solver2, problem)
-    print(file, "HullGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
+    print(file, "FastGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time2 += timed_result.time
 end
@@ -55,7 +55,7 @@ time3 = 0
 solve(solver3, problem)
 for i = 1:10
     timed_result =@timed solve(solver3, problem)
-    print(file, "DimGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
+    print(file, "SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time3 += timed_result.time
 end
@@ -70,7 +70,7 @@ time4 = 0
 solve(solver4, problem)
 for i = 1:10
     timed_result =@timed solve(solver4, problem)
-    print(file, "FastGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
+    print(file, "FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time4 += timed_result.time
 end

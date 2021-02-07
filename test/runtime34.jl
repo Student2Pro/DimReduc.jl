@@ -1,51 +1,26 @@
 using DimReduc
 using LazySets
-import DimReduc: forward_network, forward_affine_map, ishull
+#import DimReduc: forward_network, forward_affine_map, ishull
 
 nnet = read_nnet("nnet/84442.nnet")
 
-delta = 0.3
+delta = 0.1
 
 solver1 = MaxSens(delta)
 solver2 = FastGrid(delta)
 solver3 = SpeGuid(delta)
 solver4 = FastTree(delta)
 
-in_hyper = Hyperrectangle(fill(1.0, 8), fill(1.0, 8))
+in_hyper = Hyperrectangle(fill(0.5, 8), fill(0.5, 8))
 out_hyper = Hyperrectangle(fill(0.0, 2), fill(10.0, 2))
 problem = Problem(nnet, in_hyper, out_hyper)
 
-file = open("results/group3.txt", "a")
-print(file, "Test Result of Group 3: delta = $(delta)\n\n")
+file = open("results/group1.txt", "a")
+print(file, "Test Result of Group 1: delta = $(delta)\n\n")
 
 #solver1
 
-time1 = 0
-
-#solve(solver1, problem)
-for i = 1:1
-    timed_result =@timed solve(solver1, problem)
-    print(file, "MaxSens - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
-    print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time1 += timed_result.time
-end
-
-print(file, "Average time: " * string(time1/1) * " s\n\n")
-
-
 #solver2
-
-time2 = 0
-
-#solve(solver2, problem)
-for i = 1:1
-    timed_result =@timed solve(solver2, problem)
-    print(file, "FastGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
-    print(file, " - Output: " * string(timed_result.value) * "\n")
-    global time2 += timed_result.time
-end
-
-print(file, "Average time: " * string(time2/1) * " s\n\n")
 
 
 #solver3
