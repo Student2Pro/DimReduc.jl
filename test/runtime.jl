@@ -199,14 +199,14 @@ print(file, "Average time: " * string(time2/1) * " s\n\n")
 time3 = 0
 
 solve(solver3, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver3, problem)
     print(file, "SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time3 += timed_result.time
 end
 
-print(file, "Average time: " * string(time3/10) * " s\n\n")
+print(file, "Average time: " * string(time3/1) * " s\n\n")
 
 
 #solver4
@@ -214,14 +214,14 @@ print(file, "Average time: " * string(time3/10) * " s\n\n")
 time4 = 0
 
 solve(solver4, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver4, problem)
     print(file, "FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time4 += timed_result.time
 end
 
-print(file, "Average time: " * string(time4/10) * " s\n\n")
+print(file, "Average time: " * string(time4/1) * " s\n\n")
 
 close(file)
 
@@ -272,14 +272,14 @@ print(file, "Average time: " * string(time2/1) * " s\n\n")
 time3 = 0
 
 solve(solver3, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver3, problem)
     print(file, "SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time3 += timed_result.time
 end
 
-print(file, "Average time: " * string(time3/10) * " s\n\n")
+print(file, "Average time: " * string(time3/1) * " s\n\n")
 
 
 #solver4
@@ -287,14 +287,14 @@ print(file, "Average time: " * string(time3/10) * " s\n\n")
 time4 = 0
 
 solve(solver4, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver4, problem)
     print(file, "FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time4 += timed_result.time
 end
 
-print(file, "Average time: " * string(time4/10) * " s\n\n")
+print(file, "Average time: " * string(time4/1) * " s\n\n")
 
 close(file)
 
@@ -345,14 +345,14 @@ print(file, "Average time: " * string(time2/1) * " s\n\n")
 time3 = 0
 
 solve(solver3, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver3, problem)
     print(file, "SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time3 += timed_result.time
 end
 
-print(file, "Average time: " * string(time3/10) * " s\n\n")
+print(file, "Average time: " * string(time3/1) * " s\n\n")
 
 
 #solver4
@@ -360,13 +360,13 @@ print(file, "Average time: " * string(time3/10) * " s\n\n")
 time4 = 0
 
 solve(solver4, problem)
-for i = 1:10
+for i = 1:1
     timed_result =@timed solve(solver4, problem)
     print(file, "FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(file, " - Output: " * string(timed_result.value) * "\n")
     global time4 += timed_result.time
 end
 
-print(file, "Average time: " * string(time4/10) * " s\n\n")
+print(file, "Average time: " * string(time4/1) * " s\n\n")
 
 close(file)

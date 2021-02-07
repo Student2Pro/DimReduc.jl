@@ -30,7 +30,7 @@ function solve(solver::FastGrid, problem::Problem) #original
     C = vcat(W, -W)
     d = zeros(2k_1)
 
-    count = BigInt(0)
+    #count = BigInt(0)
     #println("All: " * string(prod(n_hypers_per_dim)))
 
     # preallocate work arrays
@@ -56,14 +56,14 @@ function solve(solver::FastGrid, problem::Problem) #original
 
         if isempty(inter) == false
             reach = forward_network(solver, problem.network, hyper)
-            count += 1
+            #count += 1
             if !issubset(reach, problem.output)
                 result = false
             end
         end
     end
 
-    println("DimGrid($(delta)): " * string(count))
+    #println("FastGrid($(delta)): " * string(count))
 
     if result
         return BasicResult(:holds)

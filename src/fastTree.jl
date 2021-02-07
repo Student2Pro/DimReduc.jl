@@ -20,11 +20,11 @@ function solve(solver::FastTree, problem::Problem)
 
     stack = Vector{Hyperrectangle}(undef, 0)
     push!(stack, input)
-    count = 0
+    #count = 0
     while !isempty(stack)
         interval = popfirst!(stack)
         reach = forward_network(solver, problem.network, interval)
-        count += 1
+        #count += 1
         if issubset(reach, problem.output)
             continue
         else
@@ -46,7 +46,7 @@ function solve(solver::FastTree, problem::Problem)
             end
         end
     end
-    println("DimTree($(solver.tolerance)): $(count)")
+    #println("DimTree($(solver.tolerance)): $(count)")
     return BasicResult(:holds)
 end
 
