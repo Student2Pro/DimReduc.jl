@@ -1,0 +1,13 @@
+name = "DimReduc"
+uuid = "ce260c8d-746e-4070-a4a9-f8dfb5ff1567"
+authors = ["Alex"]
+version = "0.1.0"
+
+[compat]
+julia = "1.5"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

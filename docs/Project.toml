@@ -1,0 +1,3 @@
+[deps]
+DimReduc = "ce260c8d-746e-4070-a4a9-f8dfb5ff1567"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
