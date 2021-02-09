@@ -1,0 +1,21 @@
+Test Result of mnist1: delta = 0.3
+
+Test Result of mnist1: delta = 0.3
+
+Test Result of mnist1: delta = 0.35
+
+FastGrid - test 1 - Time: 198.8679453 s - Output: BasicResult(:holds)
+FastGrid - test 2 - Time: 211.581604299 s - Output: BasicResult(:holds)
+robust acc: 0.0
+Test Result of mnist1: delta = 0.35
+
+FastGrid - test 1 - Time: 181.359189199 s - Output: BasicResult(:holds)
+robust acc: 0
+Test Result of mnist1: delta = 0.35
+
+FastGrid - test 1 - Time: 184.194628 s - Output: BasicResult(:holds)
+robust acc: 0
+Test Result of mnist1: delta = 0.35
+
+FastGrid - test 1 - Time: 185.3389885 s - Output: BasicResult(:holds)
+robust acc: 1
